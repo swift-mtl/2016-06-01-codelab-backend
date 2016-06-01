@@ -110,12 +110,12 @@ func setupRoutes(router: Router, todos: TodoDAOProtocol) {
         }
         
         let name = json["name"].stringValue
-        let description = json["description"].stringValue
+        let detail = json["detail"].stringValue
         let completed = json["completed"].boolValue
         
         Log.info("Received \(name)")
         
-        todos.add(name: name, description: description, completed: completed) {
+        todos.add(name: name, detail: detail, completed: completed) {
             
             newItem in
             
@@ -152,10 +152,10 @@ func setupRoutes(router: Router, todos: TodoDAOProtocol) {
         }
         
         let name = json["name"].stringValue
-        let description = json["description"].stringValue
+        let detail = json["detail"].stringValue
         let completed = json["completed"].boolValue
         
-        todos.update(id: id, name: name, description: description, completed: completed) {
+        todos.update(id: id, name: name, detail: detail, completed: completed) {
             
             newItem in
             
@@ -192,10 +192,10 @@ func setupRoutes(router: Router, todos: TodoDAOProtocol) {
         }
         
         let name = json["name"].stringValue
-        let description = json["description"].stringValue
+        let detail = json["detail"].stringValue
         let completed = json["completed"].boolValue
         
-        todos.update(id: id, name: name, description: description, completed: completed) {
+        todos.update(id: id, name: name, detail: detail, completed: completed) {
             
             newItem in
             

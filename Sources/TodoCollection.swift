@@ -56,19 +56,19 @@ class TodoCollection: TodoDAOProtocol {
     }
     
     
-    func add(name: String, description: String, completed: Bool = false, oncompletion: (TodoModel) -> Void ) {
+    func add(name: String, detail: String, completed: Bool = false, oncompletion: (TodoModel) -> Void ) {
         
         var original: String
         original = String(self.idCounter)
         
         let newItem = TodoModel(id: original,
                                 name: name,
-                                description: description,
-                                completed: false        )
+                                detail: detail,
+                                completed: false)
         
         writingQueue.queueAsync() {
             
-            self.idCounter+=1
+            self.idCounter += 1
             
             self._collection[original] = newItem
             
@@ -80,12 +80,31 @@ class TodoCollection: TodoDAOProtocol {
         
     }
     
+    func addTest(name: String, detail: String, completed: Bool = false) {
+        
+        var original: String
+        original = String(self.idCounter)
+        
+        let newItem = TodoModel(id: original,
+                                name: name,
+                                detail: detail,
+                                completed: false)
+            
+            self.idCounter += 1
+            
+            self._collection[original] = newItem
+            
+            Log.info("Added \(name)")
+        
+    }
+    
+    
     ///
     /// Update an element by id
     ///
     /// - Parameter id: id for the element
     /// -
-    func update(id: String, name: String?, description: String?, completed: Bool?, oncompletion: (TodoModel?) -> Void ) {
+    func update(id: String, name: String?, detail: String?, completed: Bool?, oncompletion: (TodoModel?) -> Void ) {
         
         // search for element
         
@@ -97,7 +116,7 @@ class TodoCollection: TodoDAOProtocol {
             
             let newValue = TodoModel( id: id,
                                       name: name ?? oldValue.name,
-                                      description: description ?? oldValue.description,
+                                      detail: detail ?? oldValue.detail,
                                       completed: completed ?? oldValue.completed
             )
             

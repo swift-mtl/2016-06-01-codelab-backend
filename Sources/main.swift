@@ -8,18 +8,11 @@ let router = Router()
 
 /// Setup database
 let todos: TodoDAOProtocol = TodoCollection()
+todos.addTest(name: "Beer", detail: "Heineken", completed: false)
 
-todos.add(name: "Beer", description: "Heineken", completed: false) { todo in
-    // on complete
-}
+todos.addTest(name: "Cheese", detail: "Brie", completed: false)
 
-todos.add(name: "Cheese", description: "Brie", completed: false) { todo in
-    // on complete
-}
-
-todos.add(name: "Bread", description: "Naan", completed: false) { todo in
-    // on complete
-}
+todos.addTest(name: "Bread", detail: "Naan", completed: false)
 
 /// Call a helper function to create routes in App.swift
 /// Set up middleware to parse incoming JSON in the body of client requests

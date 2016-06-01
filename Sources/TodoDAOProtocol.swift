@@ -16,9 +16,12 @@ protocol TodoDAOProtocol {
     
     func get(_ id: String, oncompletion: (TodoModel?) -> Void )
     
-    func add(name: String, description: String, completed: Bool, oncompletion: (TodoModel) -> Void )
+    func add(name: String, detail: String, completed: Bool, oncompletion: (TodoModel) -> Void )
     
-    func update(id: String, name: String?, description: String?, completed: Bool?, oncompletion: (TodoModel?) -> Void )
+    func addTest(name: String, detail: String, completed: Bool)
+
+    
+    func update(id: String, name: String?, detail: String?, completed: Bool?, oncompletion: (TodoModel?) -> Void )
     
     func delete(_ id: String, oncompletion: (Void) -> Void)
     
